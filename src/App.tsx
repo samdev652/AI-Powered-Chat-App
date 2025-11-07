@@ -1,17 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import HomePage from "./pages/HomePage";
 
 const App = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainLayout />}></Route>
-          <Route index element={<HomePage />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="chats/:chat_uid" element={<HomePage />} />
+          <Route path="chats/new" element={<HomePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -1,62 +1,68 @@
-// API functions for fetching chat data
-// TODO: Replace with actual backend API endpoints
+import axios from "axios";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const BASE_URL = "http://127.0.0.1:8000";
 
-interface Chat {
-  id: string;
-  title: string;
-  created: string;
-}
+const api = axios.create({
+  baseURL: BASE_URL,
+});
 
-/**
- * Fetch chats created today
- */
-export async function getTodaysChats(): Promise<Chat[]> {
+export async function promptGPT(data: { chat_id: string; content: string }) {
   try {
-    const response = await fetch(`${API_BASE_URL}/chats/today`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch today's chats");
+    const response = await api.post("/prompt_gpt/", data);
+    return response.data;
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
     }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching today's chats:", error);
-    // Return empty array as fallback
-    return [];
+    throw new Error("An unknown error occured!");
   }
 }
 
-/**
- * Fetch chats created yesterday
- */
-export async function getYesterdaysChats(): Promise<Chat[]> {
+export async function getChatMessages(chatId: string) {
+  if (!chatId) return;
   try {
-    const response = await fetch(`${API_BASE_URL}/chats/yesterday`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch yesterday's chats");
+    const response = await api.get(`/get_chat_messages/${chatId}/`);
+    return response.data;
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
     }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching yesterday's chats:", error);
-    // Return empty array as fallback
-    return [];
+    throw new Error("An unknown error occured!");
   }
 }
 
-/**
- * Fetch chats created in the last 7 days (excluding today and yesterday)
- */
-export async function getSevenDaysChats(): Promise<Chat[]> {
+export async function getTodaysChats() {
   try {
-    const response = await fetch(`${API_BASE_URL}/chats/seven-days`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch seven days chats");
+    const response = await api.get("/todays_chat/");
+    return response.data;
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
     }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching seven days chats:", error);
-    // Return empty array as fallback
-    return [];
+    throw new Error("An unknown error occured!");
+  }
+}
+
+export async function getYesterdaysChats() {
+  try {
+    const response = await api.get("/yesterdays_chat/");
+    return response.data;
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+    throw new Error("An unknown error occured!");
+  }
+}
+
+export async function getSevenDaysChats() {
+  try {
+    const response = await api.get("/seven_days_chat/");
+    return response.data;
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+    throw new Error("An unknown error occured!");
   }
 }

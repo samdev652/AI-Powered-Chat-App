@@ -8,7 +8,7 @@ const MainLayout = () => {
       <AppSidebar />
       <main className="w-full h-screen flex flex-col">
         <SidebarTrigger />
-        <Outlet />
+        {<Outlet />}
       </main>
     </SidebarProvider>
   );
