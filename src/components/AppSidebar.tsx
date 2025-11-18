@@ -40,19 +40,19 @@ const mainNav = [
   { title: "Settings", url: "#", icon: Settings },
 ];
 
-// const recentChats = [
-//   { title: "Fix CI/CD deploy error", url: "#", icon: MessageSquare },
-//   { title: "Postgres vs SQLite", url: "#", icon: MessageSquare },
-// ]
+const recentChats = [
+  { title: "Fix CI/CD deploy error", url: "#", icon: MessageSquare },
+  { title: "Postgres vs SQLite", url: "#", icon: MessageSquare },
+];
 
-// const yesterdaysChats = [
-//   { title: "Image resize in Django", url: "#", icon: MessageSquare },
-// ];
+const yesterdaysChats = [
+  { title: "Image resize in Django", url: "#", icon: MessageSquare },
+];
 
-// const last7DaysChats = [
-//   { title: "Build Todo App", url: "#", icon: MessageSquare },
-//   { title: "Navbar with CSS Modules", url: "#", icon: MessageSquare },
-// ];
+const last7DaysChats = [
+  { title: "Build Todo App", url: "#", icon: MessageSquare },
+  { title: "Navbar with CSS Modules", url: "#", icon: MessageSquare },
+];
 
 interface IChat {
   id: string;
