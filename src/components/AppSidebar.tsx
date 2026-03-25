@@ -33,11 +33,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const mainNav = [
-  { title: "Home", url: "#", icon: Home },
-  { title: "Inbox", url: "#", icon: Inbox },
-  { title: "Calendar", url: "#", icon: Calendar },
-  { title: "Search", url: "#", icon: Search },
-  { title: "Settings", url: "#", icon: Settings },
+  { title: "Home", url: "/", icon: Home },
 ];
 
 const recentChats = [

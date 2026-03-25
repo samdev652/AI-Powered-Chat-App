@@ -52,15 +52,7 @@ export default function Navbar() {
             )}
           </Button>
 
-          {/* Auth Controls */}
-          <div className="hidden sm:flex items-center gap-2">
-            <Button variant="outline" size="sm" className="hover:shadow-sm">
-              Sign In
-            </Button>
-            <Button size="sm" className="hover:shadow-sm">
-              Sign Out
-            </Button>
-          </div>
+
 
           {/* Avatar */}
           <Avatar className="h-8 w-8 ring-1 ring-muted-foreground/10 hover:ring-2 transition">

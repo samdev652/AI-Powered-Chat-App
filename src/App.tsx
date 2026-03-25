@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import MainLayout from "./components/MainLayout";
 import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -11,6 +13,7 @@ const App = () => {
           <Route path="chats/:chat_uid" element={<HomePage />} />
           <Route path="chats/new" element={<HomePage />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
